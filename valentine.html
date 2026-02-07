@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<title>Czy zostaniesz moją walentynką?</title>
+<style>
+    body {
+        background: #ffeff5;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding-top: 100px;
+    }
+
+    h1 {
+        font-size: 48px;
+        color: #ff3366;
+    }
+
+    #buttons {
+        margin-top: 60px;
+        position: relative;
+        height: 200px;
+    }
+
+    button {
+        font-size: 28px;
+        padding: 20px 40px;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #ff4d6d;
+        color: white;
+    }
+
+    #no {
+        background: #cccccc;
+        position: absolute;
+        left: 50%;
+        top: 80px;
+        transform: translateX(-50%);
+    }
+</style>
+</head>
+<body>
+
+<h1>Czy zostaniesz moją walentynką? ❤️</h1>
+
+<div id="buttons">
+    <button id="yes" onclick="yesClicked()">TAK</button>
+    <button id="no">NIE</button>
+</div>
+
+<script>
+const no = document.getElementById("no");
+
+document.addEventListener("mousemove", (e) => {
+    const rect = no.getBoundingClientRect();
+    const dx = e.clientX - (rect.left + rect.width / 2);
+    const dy = e.clientY - (rect.top + rect.height / 2);
+    const distance = Math.sqrt(dx*dx + dy*dy);
+
+    if (distance < 120) {
+        const x = Math.random() * (window.innerWidth - rect.width);
+        const y = Math.random() * (window.innerHeight - rect.height);
+        no.style.left = x + "px";
+        no.style.top = y + "px";
+    }
+});
+
+function yesClicked() {
+    document.body.innerHTML = "<h1>❤️ Ja bardzo bardzo lob! ❤️</h1><p style='font-size:32px'>To moze jakis wspulny ramen??? 😘</p>";
+}
+</script>
+
+</body>
+</html>
